@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="q-sys-plugin-documentation">Q-SYS Plugin &quot;Documentation&quot;</h1>
+<p><strong>Version:</strong> 7.0v2<br>
+<strong>Date:</strong> 02-16-2017</p>
+<p>Changes since last update (5.3 release):</p>
+<ul>
+<li>Added <code>GetPages()</code> function which works with the page_index to spread layouts across multiple pages</li>
+<li>added <code>FontSize</code> to plugins which bypasses autoscaling of old font property sizes to 90% in 7.0</li>
+<li>added <code>Padding</code>, <code>StrokeColor</code> and <code>StrokeWidth</code> to controls in plugins</li>
+<li>added <code>Font</code> and <code>FontStyle</code> to graphics and controls</li>
+</ul>
+<h2 id="file-extensions">File Extensions</h2>
+<p>Plugins can have either:</p>
+<ul>
+<li><code>.lua*</code></li>
+<li><code>.qplug</code></li>
+</ul>
+<p>The reason for the <code>*</code> after <code>.lua</code> is that adding extra characters after <code>.lua</code> won't hide the file from Q-SYS.<br>
+To Q-SYS, <code>example.lua</code> is just as visible as <code>example.luaold</code>. Using something like <code>example.lua.old</code> will result in hiding the file from Q-SYS.</p>
+<h2 id="file-sections">File Sections</h2>
+<h3 id="plugininfo">PluginInfo</h3>
+<pre class="hljs"><code><div>PluginInfo = 
+{
+  Name = <span class="hljs-string">"My Folder~Plugin Name"</span>,                 <span class="hljs-comment">-- Appears in the Schematic Library (in "My Folder").</span>
+  Version = <span class="hljs-string">"1.0.0"</span>,                              <span class="hljs-comment">-- A version number string - to detect version mismatches.</span>
+  Id = <span class="hljs-string">"0c02812a-8c75-4867-af91-06c11ee59bce"</span>,    <span class="hljs-comment">-- A unique hyphenated GUID (guidgenerator.com)</span>
+  Description = <span class="hljs-string">"Includes some bugfixes"</span>,         <span class="hljs-comment">-- this message is seen when a version mismatch occurs</span>
+  ShowDebug = <span class="hljs-literal">false</span>                               <span class="hljs-comment">-- shows the Lua debug window at the bottom of the UI</span>
+}
+</div></code></pre>
+<h3 id="block-color">Block color:</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetColor</span><span class="hljs-params">(props)</span></span>
+  <span class="hljs-keyword">return</span> { <span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span> }    <span class="hljs-comment">-- R, G, B</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="pretty-name">Pretty Name</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetPrettyName</span><span class="hljs-params">(props)</span></span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"The best litle Plugin in Texas"</span> &lt;<span class="hljs-comment">-- to define a longer component name than the library name</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="properties">Properties</h3>
+<p>Each property can have:</p>
+<ul>
+<li>Name = string (text displayed next to property and referred to as <code>props[&quot;&lt;property_name&gt;&quot;].Value</code> in the code)</li>
+<li>Type = string, integer, double, boolean, enum (boolean will give Yes or No choice, but true/false in the code)</li>
+<li>Value = default value for property (in correct type for property)</li>
+<li>for enum type: <code>Choices = { list of choice strings }</code> for ComboBox</li>
+<li>for integer or double types:
+Min = lowest extent
+Max = highest extent</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetProperties</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">return</span>
+  {
+    {
+      Name = <span class="hljs-string">"Pick a number"</span>,
+      Type = <span class="hljs-string">"integer"</span>,
+      Min  = <span class="hljs-number">1</span>,
+      Max = <span class="hljs-number">100</span>,
+      Value = <span class="hljs-number">1</span>
+    },
+    {
+      Name = <span class="hljs-string">"Best Way to Go"</span>,
+      Type = <span class="hljs-string">"enum"</span>,
+      Choices = { <span class="hljs-string">"This way"</span>, <span class="hljs-string">"That way"</span> },
+      Value = <span class="hljs-string">"This way"</span>,
+    },
+  }
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>When properties need to change based on the property values, the <code>RectifyProperties</code> function can be used:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RectifyProperties</span><span class="hljs-params">(props)</span></span>
+  <span class="hljs-comment">-- example: hide "Number of PINs" if "Use Pins" is "No"</span>
+  props[<span class="hljs-string">"Number of PINs"</span>].IsHidden = props[<span class="hljs-string">"Use PIN"</span>].Value == <span class="hljs-string">"No"</span>
+  <span class="hljs-keyword">return</span> props
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="controls">Controls</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetControls</span><span class="hljs-params">(props)</span></span>
+
+  <span class="hljs-keyword">return</span> {
+
+    {
+      Name = <span class="hljs-string">"Input Gain"</span>,  <span class="hljs-comment">-- Name used for control, on pins and via Lua Scripts and QRC</span>
+      ControlType = <span class="hljs-string">"Knob"</span>, <span class="hljs-comment">-- Can be Button, Knob, Indicator or Text</span>
+      ControlUnit = <span class="hljs-string">"dB"</span>,   <span class="hljs-comment">-- For Knob: Hz, Float, Integer, Pan, Percent, Position or Seconds</span>
+      Min = <span class="hljs-number">-6</span>,   <span class="hljs-comment">-- minimum value for knob</span>
+      Max = <span class="hljs-number">6</span>,    <span class="hljs-comment">-- maximum value for knob</span>
+      Count = <span class="hljs-number">10</span>, <span class="hljs-comment">-- number of controls to create (can be calculated based on properties, etc.)</span>
+    },
+
+    {
+      Name = <span class="hljs-string">"Mute"</span>,
+      ControlType = <span class="hljs-string">"Button"</span>,
+      ButtonType = <span class="hljs-string">"Toggle"</span>, <span class="hljs-comment">-- ButtonType: Momentary, Toggle or Trigger</span>
+      UserPin = boolean      <span class="hljs-comment">-- If true, pin will be available in Control Pins area</span>
+      PinStyle = <span class="hljs-string">"Input"</span>,    <span class="hljs-comment">-- PinStyle can be "Input", "Output", "Both"</span>
+      IconType = <span class="hljs-string">"SVG"</span>,      <span class="hljs-comment">-- Can be "SVG" "Image" or "Icon"(default)</span>
+      Icon = <span class="hljs-string">"base64-encoded svg data (svg, png, jpg)"</span> <span class="hljs-comment">-- for IconType "SVG"</span>
+      <span class="hljs-comment">-- or</span>
+      Icon = <span class="hljs-string">"base64-encoded image data (png, jpg)"</span> <span class="hljs-comment">-- for IconType "Image"</span>
+      <span class="hljs-comment">-- or</span>
+      Icon = <span class="hljs-string">"name of built-in icon e.g. skull"</span> <span class="hljs-comment">-- for IconType "Icon"</span>
+    },
+
+    {
+      Name = <span class="hljs-string">"My Eight LEDs"</span>,
+      ControlType = <span class="hljs-string">"Indicator"</span>,
+      PinStyle = <span class="hljs-string">"Output"</span>,
+      IndicatorType = <span class="hljs-string">"Led"</span>, <span class="hljs-comment">-- IndicatorType can be Led, Meter, Text or Status</span>
+      Count = <span class="hljs-number">8</span>,
+    },
+
+   }
+
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="control-layout">Control Layout</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetControlLayout</span><span class="hljs-params">(props)</span></span>
+
+  <span class="hljs-comment">-- Make a local control layout table containing a list specifying</span>
+  <span class="hljs-comment">-- details for each control defined in GetControls</span>
+
+  <span class="hljs-keyword">local</span> layout = {}
+
+  layout[<span class="hljs-string">"Status"</span>] =
+  {
+    Style = <span class="hljs-string">"Text"</span>,
+    Position = { <span class="hljs-number">114</span>, <span class="hljs-number">31</span> },
+    Size = { <span class="hljs-number">217</span>, <span class="hljs-number">19</span> },
+    IsReadOnly = <span class="hljs-literal">true</span>
+  }
+
+  <span class="hljs-comment">-- continues below</span>
+
+</div></code></pre>
+<p>Options:</p>
+<ul>
+<li><code>Position = { x, y }</code></li>
+<li><code>Size = { h, w }</code></li>
+<li><code>Color = { r, g, b }</code></li>
+<li><code>UnlinkOffColor = a boolean</code></li>
+<li><code>OffColor = { r, g, b }</code></li>
+<li><code>BackgroundColor = { r, g, b }</code> (for Meters)</li>
+<li><code>PrettyName = &quot;My Friendly Control&quot;</code> (displayed to user, but different to what is used in the code)</li>
+<li><code>Style = &quot;Fader&quot;/&quot;Knob&quot;/&quot;Button&quot;/&quot;Text&quot;/&quot;Meter&quot;/&quot;Led&quot;/&quot;ListBox&quot;/&quot;ComboBox&quot;</code></li>
+<li><code>ButtonStyle = &quot;Toggle&quot;/&quot;Momentary&quot;/&quot;Trigger&quot;/&quot;On&quot;/&quot;Off&quot;/&quot;Custom&quot;</code> (custom is for a String type button)</li>
+<li><code>CustomButtonUp = &quot;a string&quot;</code> (custom button only)</li>
+<li><code>CustomButtonDown = &quot;a string&quot;</code> (custom button only)</li>
+<li><code>MeterStyle = &quot;Level&quot;/&quot;Reduction&quot;/&quot;Gain&quot;/&quot;Standard&quot;</code> (meter style only)</li>
+<li><code>HTextAlign = &quot;Center&quot;/&quot;Left&quot;/&quot;Right&quot;</code></li>
+<li><code>VTextAlign = &quot;Center&quot;, &quot;Top&quot;, &quot;Bottom&quot;</code></li>
+<li><code>TextBoxStyle = &quot;Normal&quot;/&quot;Meter&quot;/&quot;NoBackground&quot;</code></li>
+<li><code>Legend = &quot;Button Text&quot;</code> (for buttons - can be changed with runtime Lua)</li>
+<li><code>WordWrap = true</code></li>
+<li><code>Padding = 10</code> (v7.0+)</li>
+<li><code>StrokeColor = { r, g, b }</code> (v7.0+; Default is {0,0,0}, which is black)</li>
+<li><code>StrokeWidth = 2</code> (New for 7.0; Default is 1)</li>
+<li><code>ShowTextbox = false</code> (for meters, faders and knobs)</li>
+<li><code>TextFontSize = 12</code> (deprecated - see FontSize)</li>
+<li><code>IsBold = true</code> (deprecated - see FontStyle)</li>
+<li><code>FontSize = 12</code></li>
+<li><code>Font = &quot;Montserrat&quot;</code></li>
+<li><code>FontStyle = &quot;ThinItalic&quot;</code> (check Designer font dropdowns for valid styles)</li>
+<li><code>Margin = 4</code></li>
+<li><code>Radius = 3</code></li>
+<li><code>CornerRadius = 2</code></li>
+<li><code>IsReadOnly = a boolean</code> (not changeable at runtime, good for turning read-write controls into indicators)</li>
+</ul>
+<h3 id="graphics-layout">Graphics Layout</h3>
+<p>Still inside the GetControlLayout function, make a local graphics layout table containing a list specifying details for each raphic element needed in the Plugin.<br>
+Z-Order is determined by the order graphics are defined (lower to upper; upper covers lower)</p>
+<pre class="hljs"><code><div>  
+  <span class="hljs-comment">-- continues from function above</span>
+  
+  <span class="hljs-keyword">local</span> graphics = {
+
+    {
+      Type = <span class="hljs-string">"GroupBox"</span>,
+      Text = <span class="hljs-string">"Status"</span>,
+      HTextAlign = <span class="hljs-string">"Left"</span>,
+      StrokeWidth = <span class="hljs-number">1</span>,
+      CornerRadius = <span class="hljs-number">8</span>,
+      Fill = { <span class="hljs-number">215</span>, <span class="hljs-number">215</span>, <span class="hljs-number">235</span> },
+      Position = { <span class="hljs-number">0</span>, <span class="hljs-number">0</span> },
+      Size = { <span class="hljs-number">345</span>, <span class="hljs-number">126</span> }
+    },
+
+  }
+
+  <span class="hljs-keyword">return</span> layout, graphics;
+
+<span class="hljs-keyword">end</span>
+
+</div></code></pre>
+<p>Options:</p>
+<ul>
+<li><code>Position = { 20, 30 }</code></li>
+<li><code>Size = { 64, 64 }</code></li>
+<li><code>Type = &quot;Label&quot;/&quot;GroupBox&quot;/&quot;Header&quot;/&quot;MeterLegend&quot;/&quot;Image&quot;/&quot;Svg&quot;</code></li>
+<li><code>Image = &quot;...data...&quot;</code> (which contains the entire Base-64-encoded JPG/PNG/SVG string for the Image or Svg types)</li>
+<li><code>Text = &quot;Some label or other text&quot;</code></li>
+<li><code>TextSize = 15</code> (deprecated - see FontSize)</li>
+<li><code>FontSize = 15</code></li>
+<li><code>Font = &quot;Montserrat&quot;</code></li>
+<li><code>FontStyle = &quot;ThinItalic&quot;</code></li>
+<li><code>HTextAlign = &quot;Center&quot;/&quot;Left&quot;/&quot;Right&quot;</code></li>
+<li><code>VTextAlign = &quot;Center&quot;/&quot;Top&quot;/&quot;Bottom&quot;</code></li>
+<li><code>IsBold = true</code></li>
+<li><code>Color = { r, g, b }</code></li>
+<li><code>TextColor = { r, g, b }</code> (for &quot;Label&quot; type, use 'Color' to set the text color)</li>
+<li><code>StrokeColor = { r, g, b }</code> (for color of the outline - GroupBox and Label only)</li>
+<li><code>Fill = { r, g, b }</code> (color inside the outline - GroupBox only)</li>
+<li><code>StrokeWidth = 2</code></li>
+<li><code>CornerRadius = 3</code></li>
+<li><code>Radius = 2</code></li>
+</ul>
+<h3 id="pages-v70">Pages (v7.0+)</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetPages</span><span class="hljs-params">()</span></span>
+  <span class="hljs-keyword">return</span> {
+    { name = <span class="hljs-string">"Page 1"</span> },
+    { name = <span class="hljs-string">"Page 2"</span> }
+  }
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>In <code>GetControlLayout()</code>, you can define control and/or graphics using a conditional check of the <code>page_index</code> virtual property to determine which elements appear on which page. Any elements which are not part of a conditional statement using page_index will appear on all pages. This might be useful for logos or controls which should appear in the same place on every page.</p>
+<p>Within <code>GetControlLayout(props)</code>:</p>
+<pre class="hljs"><code><div>  <span class="hljs-keyword">if</span> props[<span class="hljs-string">'page_index'</span>].Value==<span class="hljs-number">1</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-comment">-- controls and graphics which appear on page 1</span>
+  <span class="hljs-keyword">elseif</span> props[<span class="hljs-string">'page_index'</span>].Value==<span class="hljs-number">2</span> <span class="hljs-keyword">then</span>
+    <span class="hljs-comment">-- controls and graphics which should appear on page 2</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment">-- controls and graphics which should appear on all pages</span>
+  <span class="hljs-comment">-- should be outside of the page_index conditional statement</span>
+</div></code></pre>
+<h3 id="pins">Pins</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetPins</span><span class="hljs-params">(props)</span></span> &lt;<span class="hljs-comment">-- define Plugin pins that AREN'T tied to UI controls (internal components)</span>
+  <span class="hljs-comment">-- The order the pins are defined determines their onscreen order</span>
+  <span class="hljs-comment">-- This section is optional. If you don't need pins to internal components, you can omit the function</span>
+
+  <span class="hljs-keyword">local</span> pins = {}
+  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(pins,
+    {
+      Name = <span class="hljs-string">"Audio Input"</span>,
+      Direction = <span class="hljs-string">"input"</span>,
+    })
+  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(pins,
+    {
+      Name = <span class="hljs-string">"Audio Output"</span>,
+      Direction = <span class="hljs-string">"output"</span>,
+    })
+  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(pins,
+    {
+      Name = <span class="hljs-string">"Serial"</span>,
+      Direction = <span class="hljs-string">"input"</span>,
+      Domain = <span class="hljs-string">"serial"</span> &lt;<span class="hljs-comment">-- to add serial pins. Not needed for audio pins.</span>
+    })
+  <span class="hljs-keyword">return</span> pins
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="components">Components</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetComponents</span><span class="hljs-params">(props)</span></span>
+
+  <span class="hljs-comment">-- This section is optional. If you don't need any internal components, you can omit the function</span>
+
+  <span class="hljs-keyword">return</span> 
+  { 
+    {   
+      Name = <span class="hljs-string">"main_mixer"</span>, <span class="hljs-comment">-- Name which your runtime Lua code will reference this component</span>
+      Type = <span class="hljs-string">"mixer"</span>,      <span class="hljs-comment">-- Type is the type obtained from the Named Components Lister</span>
+      Properties =   
+      {
+        [<span class="hljs-string">"n_inputs"</span>] = <span class="hljs-number">8</span>,  <span class="hljs-comment">-- define any non-default properties the component must use (Named Component Lister)</span>
+        [<span class="hljs-string">"n_outputs"</span>] = <span class="hljs-number">1</span>,
+      }
+    }
+  }
+
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="wiring">Wiring</h3>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetWiring</span><span class="hljs-params">(props)</span></span> 
+
+  <span class="hljs-comment">-- This section is optional. If you have any internal components or non-control pins, you can omit the function</span>
+  <span class="hljs-comment">-- Wiring to multiple internal components or pins: place all pins into one longer wiring definition statement</span>
+
+  <span class="hljs-keyword">local</span> wiring = {}
+
+  <span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span>,<span class="hljs-number">8</span> <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>( wiring, { <span class="hljs-built_in">string</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">"Input %i"</span>, i), <span class="hljs-built_in">string</span>.<span class="hljs-built_in">format</span>(<span class="hljs-string">"main_mixer Input %i"</span>, i) } )
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>( wiring, { <span class="hljs-string">"Mix Output"</span>, <span class="hljs-string">"main_mixer Output 1"</span> } )
+
+  <span class="hljs-keyword">return</span> wiring
+
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="control-script">Control Script</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> controls <span class="hljs-keyword">then</span>
+
+  <span class="hljs-comment">-- Your runtime Lua code goes here.</span>
+  <span class="hljs-comment">-- All Q-Sys Lua libraries and functions and are available within the Plugin environment.</span>
+  <span class="hljs-comment">-- Access Plugin controls with "Controls." as you would in a Scriptable Control</span>
+
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h2 id="misc-tips">Misc Tips</h2>
+<p><strong>Tip 1:</strong><br>
+If you have multiple identical components named with ascending numbers, to access those components from the runtime Lua code, you must refer to them using the Global Lua variable _G and their name:<br>
+example: If you defined a mixer component in a loop and appended numbers to the names to keep them unique...</p>
+<pre class="hljs"><code><div>mixer1 = <span class="hljs-built_in">_G</span>[<span class="hljs-string">"mixer_1"</span>]
+<span class="hljs-built_in">print</span>(mixer1[<span class="hljs-string">"output.1.gain"</span>]
+<span class="hljs-comment">-- or</span>
+mixer1gain = <span class="hljs-built_in">_G</span>[<span class="hljs-string">"mixer_1"</span>][<span class="hljs-string">"output.1.gain"</span>]
+<span class="hljs-built_in">print</span>(mixer1gain)
+</div></code></pre>
+<p>Basically, you can just pre-pend the _G to the usual way to address Named Components</p>
+<p><strong>Tip 2:</strong><br>
+Components within Plugins only have accessability from the Lua script within the Plugin. This means that you can reuse an internal component name in another Plugin within the same file or have multiple copies of the same Plugin within a file without conflict.</p>
+<p><strong>Tip 3:</strong><br>
+To access Plugin property values table from within the runtime Lua code, use the 'Properties' table constant
+Each property name has .Name (itself), Value (what it is currently set to), Type (string, integer, double, bool, enum) and for integer type, Min and Max.
+To access the value of any property, use dot notation (example of an enum property called &quot;Model&quot;):</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> Properties.Model.Value == <span class="hljs-string">"Tesla Model S"</span> <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">"Awesome!"</span>)
+<span class="hljs-keyword">elseif</span> Properties.Model.Value == <span class="hljs-string">"Geo Metro"</span> <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">print</span>(<span class="hljs-string">"Awww!"</span>)
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+
+</body>
+</html>
