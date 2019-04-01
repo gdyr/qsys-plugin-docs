@@ -1,0 +1,251 @@
+Q-SYS Plugin "Documentation"
+
+File Extensions Note: Plugins can have either .lua* or .qplug as a file extension and will be recognized. The reason for the * after .lua is that adding extra characters
+after .lua won't hide the file from Q-SYS. To Q-SYS, 'example.lua' is just as visible as 'example.luaold'. Using something like 'example.lua.old' will result in hiding
+the file from Q-SYS.
+
+PLUGIN FILE SECTIONS-----
+
+PluginInfo section:
+
+PluginInfo = 
+{
+  Name = "Plugin Name", <-- Name that will appear in the Schematic Library (putting ~ inbetween words makes second word the name in a folder called by the first word
+  Version = "1.0", <-- A version number string. Changing later will allow users to upgrade.
+  Id = "0c02812a-8c75-4867-af91-06c11ee59bce", <-- A unique hyphenated GUID (guidgenerator.com)
+  Description = "What does this version do?", <-- this message is seen when a version mismatch occurs
+  ShowDebug = false <-- setting this to true will reveal the Lua debug window at the bottom of the UI
+}
+
+To change block color:
+(shown with color determined by a property. can just use 'return { R, G, B }' instead)
+function GetColor(props)
+  if props["Input Count"].Value > 4 then
+    return { 255, 0, 0 }
+  else return { 0, 255, 0 }  end
+end
+
+function GetPrettyName(props)
+  return "The best litle Plugin in Texas" <-- to define a longer component name than the library name
+end 
+
+function GetProperties()
+  -- return an ordered list of property parameter lists
+  return
+  {
+    {
+      Name = "Pick a number",
+      Type = "integer",
+      Min  = 1,
+      Max = 100,
+      Value = 1
+    },
+    {
+      Name = "Best Way to Go",
+      Type = "enum",
+      Choices = { "This way", "That way" }, <-- if you want blank by default, place "" as the first list item and Value below.
+      Value = "This way", <-- must match one of the Choices exactly
+    },
+  }
+  Each property can have:
+  - Name = string (text displayed next to property and referred to as 'props["<property_name>"].Value' in the code)
+  - Type = string, integer, double, boolean, enum (boolean will give Yes or No choice, but true/false in the code)
+  - Value = default value for property (in correct type for property)
+  - for 'enum' type:
+    Choices = { list of choice strings } for ComboBox
+  - for integer or double types: 
+    Min = lowest extent
+    Max = highest extent
+end
+
+function RectifyProperties(props) <-- Used to hide properties that aren't needed based on other property settings
+  props["Number of PINs"].IsHidden = props["Use PIN"].Value == "No" <-- .IsHidden will hide a property line if set to "Yes"
+  return props
+end
+
+function GetControls(props) <--
+  - Return a list of controls needed on UI of Plugin
+  return {
+    {
+      Name = "Input Gain", <-- Name used for control, on pins and via Lua Scripts and QRC
+      ControlType = "Knob", <-- Can be Button, Knob, Indicator or Text
+      ControlUnit = "dB", <-- ControlUnit ( ControlType == Knob ) can be Hz, Float, Integer, Pan, Percent, Position or Seconds
+      Min = -6, <-- for knob type
+      Max = 6, <-- for knob type
+      Count = 10, <-- number of controls to create (can be calculated based on properties, etc.)
+    },
+    {
+      Name = "Mute",
+      ControlType = "Button",
+      ButtonType = "Toggle", <-- ButtonType ( ControlType == Button ) can be Momentary, Toggle or Trigger
+      Count = 1,
+      UserPin = boolean (4.2+; false is default. If true, pin will be available in Control Pins area)
+      PinStyle = "Input", <-- PinStyle can be "Input", "Output", "Both"
+    },
+    {
+      Name = propName.." "..CardToControl[model],
+      ControlType = "Indicator",
+      PinStyle = "Output",
+      IndicatorType = "Led", <-- IndicatorType ( ControlType == Indicator ) can be Led, Meter, Text or Status
+      Count = 8,
+    },
+   }
+end
+
+GetControlLayout function:
+  - Make a local control layout table containing a list specifying details for each control defined in GetControls
+  layout = {}
+
+  layout["Status"] =
+  {
+    Style = "Text",
+    Position = { 114, 31 },
+    Size = { 217, 19 },
+    IsReadOnly = true
+  }
+
+  Options:
+    Position = { x, y }
+    Size = { h, w }
+    Color = { r, g, b }
+    UnlinkOffColor = a boolean
+    OffColor = { r, g, b }
+    PrettyName = a string which is displayed to user, but different to what is used in the code
+    Style = "Fader"/"Knob"/"Button"/"Text"/"Meter"/"Led"/"ListBox"/"ComboBox"
+    ButtonStyle = "Toggle"/"Momentary"/"Trigger"/"On"/"Off"/"Custom" <-- custom is for a String type button
+    CustomButtonUp = a string <-- Custom Button only
+    CustomButtonDown = a string <-- Custom Button only
+    MeterStyle = "Level"/"Reduction"/"Gain"/"Standard" <-- Meter style only
+    HTextAlign = "Center"/"Left"/"Right"
+    VTextAlign = Center, Top, Bottom
+    TextBoxStyle = "Normal"/"Meter"/"NoBackground"
+    Legend = a string <-- for buttons (can be changed with runtime Lua)
+    WordWrap = a boolean
+    IsBold = a boolean
+    ShowTextbox = a boolean <-- for meters, faders and knobs
+    TextFontSize = a number
+    Margin = a number
+    Radius = a number
+    IsReadOnly = a boolean <-- not able to be changed at runtime--good for status readouts; not necessary for indicators
+
+  - Still inside the GetControlLayout function, make a local graphics layout table containing a list specifying details for each raphic element needed in the Plugin
+  - Z-Order is determined by the order graphics are defined (lower to upper; upper covers lower)
+
+  graphics = {
+  {
+    Type = "GroupBox",
+    Text = "Status",
+    HTextAlign = "Left",
+    StrokeWidth = 1,
+    CornerRadius = 8,
+    Fill = { 215, 215, 235 },
+    Position = { 0, 0 },
+    Size = { 345, 126 }
+  }, <-- comma because the next graphic element is another table (in Lua, even the last item can have a trailing comma
+
+  Options:
+    Position = { 20, 30 }
+    Size = { 64, 64 }
+    Type = "Label"/"GroupBox"/"Header"/"MeterLegend"
+    Text = a string
+    TextSize = a number
+    HTextAlign = "Center"/"Left"/"Right"
+    VTextAlign = "Center"/"Top"/"Bottom"
+    IsBold = a boolean
+    Color = { r, g, b }
+    TextColor = { r, g, b } <-- For "Label" type, use 'Color' to set the text color
+    StrokeColor = { r, g, b } <-- color of the outline (GroupBox and Label only)
+    Fill = { r, g, b } <-- color inside the outline (GroupBox only)
+    StrokeWidth = a number
+    CornerRadius = a number
+
+  return layout, graphics
+end
+
+function GetPins(props) <-- define Plugin pins that AREN'T tied to UI controls (internal components)
+  -- The order the pins are defined determines their onscreen order
+  -- This section is optional. If you don't need pins to internal components, you can omit the function
+
+  local pins = {}
+  table.insert(pins,
+    {
+      Name = "Audio Input",
+      Direction = "input",
+    })
+  table.insert(pins,
+    {
+      Name = "Audio Output",
+      Direction = "output",
+    })
+  table.insert(pins,
+    {
+      Name = "Serial",
+      Direction = "input",
+      Domain = "serial" <-- to add serial pins. Not needed for audio pins.
+    })
+  return pins
+end
+
+function GetComponents(props)
+  -- This section is optional. If you don't need any internal components, you can omit the function
+
+  return 
+  { 
+    {   
+      Name = "main_mixer", <-- Name which your runtime Lua code will reference this component
+      Type = "mixer", <-- Type is the type obtained from the Named Components Lister
+      Properties =   
+      {
+        ["n_inputs"] = 8, <-- define any non-default properties the component must use (Named Component Lister)
+        ["n_outputs"] = 1,
+      }
+    }
+  }
+end
+
+function GetWiring(props) 
+  -- This section is optional. If you have any internal components or non-control pins, you can omit the function
+  -- Wiring to multiple internal components or pins: place all pins into one longer wiring definition statement
+
+  local wiring = {}
+  for i = 1,8 do
+    table.insert( wiring, { string.format("Input %i", i), string.format("main_mixer Input %i", i) } )
+  end
+  table.insert( wiring, { "Mix Output", "main_mixer Output 1" } )
+  return wiring
+end
+
+if controls then
+
+  -- Your runtime Lua code goes here.
+  -- All Q-Sys Lua libraries and functions and are available within the Plugin environment.
+  -- Access Plugin controls with "Controls." as you would in a Scriptable Control
+  -- You may access variables and functions outside of this if statement if necessary.
+  --   ...No need to make copies to place within this if statement to access them.
+
+end
+-- This is the end of the Plugin file
+
+Tips
+Tip 1:
+If you have multiple identical components named with ascending numbers, to access those components from the runtime Lua code, you must refer to them using the Global Lua variable _G and their name:
+example: If you defined a mixer component in a loop and appended numbers to the names to keep them unique...
+mixer1 = _G["mixer_1"]
+print(mixer1["output.1.gain"]
+ or
+mixer1gain = _G["mixer_1"]["output.1.gain"]
+print(mixer1gain)
+HINT: Basically, you can just pre-pend the _G to the usual way to address Named Components
+
+Tip 2:
+Components within Plugins only have accessability from the Lua script within the Plugin. This means that you can reuse an internal component name in another Plugin within the same file or have multiple copies of the same Plugin within a file without conflict and because of the embarassment that would cause.
+
+Tip 3:
+- To access Plugin property values table from within the runtime Lua code, use the 'Properties' table constant
+- Each property name has .Name (itself), Value (what it is currently set to), Type (string, integer, double, bool, enum) and for integer type, Min and Max.
+- To access the value of the value of any property, use dot notation (example of an enum property called "Model"):
+    if Properties.Model.Value == "Tesla Model S" then
+      print("Awesome!")
+    elseif Properties.Model.Value == "Geo Metro" then
+      print("Awww!")
+    end
