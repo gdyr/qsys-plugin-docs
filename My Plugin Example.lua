@@ -65,8 +65,7 @@ function GetControls(props)
       UserPin = false, -- No UserPin or UserPin=false with PinStyle means the pin is present with no option to remove it
     },
    }
-,
-      ZOrder = 1end
+end
 function GetControlLayout(props)
   -- make input gains
   layout = {}
@@ -84,6 +83,7 @@ function GetControlLayout(props)
       ZOrder = 6 + i
     }
   end
+  
   layout["Mute"] = 
   {
     Legend = "MUTE ME",
