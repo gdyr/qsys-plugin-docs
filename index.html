@@ -552,6 +552,7 @@ Max = highest extent</li>
 <li><code>Radius = 3</code></li>
 <li><code>CornerRadius = 2</code></li>
 <li><code>IsReadOnly = a boolean</code> (not changeable at runtime, good for turning read-write controls into indicators)</li>
+<li><code>ZOrder = an integer</code> (V7.0.1+ Every ZOrder must be unique. For best results when using the ZOrder property, all controls & graphics should have a ZOrder Specified)
 </ul>
 <h3 id="graphics-layout">Graphics Layout</h3>
 <p>Still inside the GetControlLayout function, make a local graphics layout table containing a list specifying details for each raphic element needed in the Plugin.<br>
@@ -600,6 +601,7 @@ Z-Order is determined by the order graphics are defined (lower to upper; upper c
 <li><code>StrokeWidth = 2</code></li>
 <li><code>CornerRadius = 3</code></li>
 <li><code>Radius = 2</code></li>
+<li><code>ZOrder = an integer</code> (V7.0.1+ Every ZOrder must be unique. For best results when using the ZOrder property, all controls & graphics should have a ZOrder Specified)
 </ul>
 <h3 id="pages-v70">Pages (v7.0+)</h3>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetPages</span><span class="hljs-params">()</span></span>
