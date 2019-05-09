@@ -79,9 +79,11 @@ function GetControlLayout(props)
       Color = { 128, 255*(i-1)/i_count, 128 },
       Position = { 10+32*(i-1), 115 },
       Size = { 32, 128 },
-      IsReadOnly = i == 3
+      IsReadOnly = i == 3,
+      ZOrder = 6 + i
     }
   end
+  
   layout["Mute"] = 
   {
     Legend = "MUTE ME",
@@ -93,7 +95,8 @@ function GetControlLayout(props)
     Position = { 10, 58 },
     Size = { 32*i_count, 32 },
     UnlinkOffColor = true,
-    OffColor = { 0, 255, 128 }
+    OffColor = { 0, 255, 128 },
+    ZOrder = 5
   }
   
   graphics = 
@@ -108,7 +111,8 @@ function GetControlLayout(props)
       StrokeWidth = 1,
       CornerRadius = 8,
       Position = { 0, 0 },
-      Size = { 20+32*i_count, 264 }
+      Size = { 20+32*i_count, 264 },
+      ZOrder = 1
     },
     {
       Type = "Label",
@@ -121,13 +125,15 @@ function GetControlLayout(props)
       StrokeWidth = 6,
       CornerRadius = 15,
       Position = { 10, 26 },
-      Size = { 32*i_count, 32 }
+      Size = { 32*i_count, 32 },
+      ZOrder = 2
     },
     {
       Type = "Header",
       Text = "Input Faders",
       Position = { 10, 97 },
-      Size = { 32*i_count, 17 }
+      Size = { 32*i_count, 17 },
+      ZOrder = 3
     },
   }
   if i_count>2 then
@@ -137,7 +143,8 @@ function GetControlLayout(props)
       Text = "Disabled Control",
       TextSize = 8,
       Position = { 74, 243 },
-      Size = { 32, 21 }
+      Size = { 32, 21 },
+      ZOrder = 4
     })
   end
   return layout, graphics
